@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import 'dotenv/config';
 import passport from 'passport';
-import * as controller from '../../Controllers/index.js';
+// import * as controller from '../../Controllers/index.js';
 
-const router = Router();
+const index = Router();
+const array = [];
 
 //*GET
-router.get('/', controller.indexGet);
 
 //*POST
 
@@ -14,4 +14,15 @@ router.get('/', controller.indexGet);
 
 //*Update
 
-export default router;
+index.get('/', (req, res) => {
+  res.json({ name: 'frodo' });
+});
+
+index.get('/test', (req, res) => res.json({ array }));
+
+index.post('/test', (req, res) => {
+  array.push(req.body.item);
+  res.send('success!');
+});
+
+export default index;
