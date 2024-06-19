@@ -1,13 +1,24 @@
-import mongoose, { Schema } from 'mongoose';
+import { mongoose } from 'mongoose';
 import 'dotenv/config';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
-const uri = process.env.mongoDB;
+async function initializeTestingMongoServer() {
+  const mongoServer = await MongoMemoryServer.create();
+  const mongoUri = mongoServer.getUri();
 
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(uri);
+  mongoose.connect(mongoUri);
+
+  mongoose.connection.on('error', (e) => {
+    if (e.message.code === 'ETIMEDOUT') {
+      console.log(e);
+      mongoose.connect(mongoUri);
+    }
+    console.log(e);
+  });
+
+  mongoose.connection.once('open', () => {
+    console.log(`MongoDB successfully connected to ${mongoUri}`);
+  });
 }
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'mongo connection error'));
 
-//todo: testing if the models are working fine inside database
+export default initializeTestingMongoServer;

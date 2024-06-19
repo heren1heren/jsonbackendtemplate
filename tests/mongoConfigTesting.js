@@ -1,23 +1,23 @@
-import { connect, connection } from 'mongoose';
+import { mongoose } from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
-async function initializeMongoServer() {
+async function initializeTestingMongoServer() {
   const mongoServer = await MongoMemoryServer.create();
   const mongoUri = mongoServer.getUri();
 
-  connect(mongoUri);
+  mongoose.connect(mongoUri);
 
-  connection.on('error', (e) => {
+  mongoose.connection.on('error', (e) => {
     if (e.message.code === 'ETIMEDOUT') {
       console.log(e);
-      connect(mongoUri);
+      mongoose.connect(mongoUri);
     }
     console.log(e);
   });
 
-  connection.once('open', () => {
+  mongoose.connection.once('open', () => {
     console.log(`MongoDB successfully connected to ${mongoUri}`);
   });
 }
 
-export default initializeMongoServer;
+export default initializeTestingMongoServer;
