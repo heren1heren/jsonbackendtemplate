@@ -1,5 +1,7 @@
 **Todo**:
-creating tests directory with its skeleton
+npm install
+**Routes**
+
 **Notes**:
 
 **Plans**:
