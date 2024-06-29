@@ -7,6 +7,7 @@ const index = Router();
 const array = [];
 
 //*GET
+index.get('/', controller.indexGet);
 
 //*POST
 

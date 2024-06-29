@@ -6,6 +6,9 @@ import jwt from 'jsonwebtoken';
 
 //*Get
 export const indexGet = asyncHandler(async (req, res, netx) => {
+  /** Step by step guide:
+   *
+   */
   res.json({ text: 'main page' });
 });
 //*post
