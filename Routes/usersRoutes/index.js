@@ -11,9 +11,9 @@ index.get('/', controller.indexGet);
 
 //*POST
 
-//*Delete
+//*DELETE
 
-//*Update
+//*UPDATE
 
 index.get('/', (req, res) => {
   res.json({ name: 'frodo' });

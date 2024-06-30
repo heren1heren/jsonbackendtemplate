@@ -24,3 +24,7 @@ test('testing route works', (done) => {
         .expect({ array: ['hello'] }, done);
     });
 });
+//*POST
+//*DELETE
+//*UPDATE
+//*GET
