@@ -1,7 +1,7 @@
-// ? why do I need to run this file first?
+// init this one first
 
 import  {Client} from 'pg';
-require('dotenv').config();
+import 'dotenv/config'; 
 
 // raw SQL
 const SQL = ``;

@@ -1,6 +1,7 @@
 import { Pool } from 'pg';
-require('dotenv').config();
+import 'dotenv/config'; 
 // Again, this should be read from an environment variable
-module.exports = new Pool({
+const pool = new Pool({
   connectionString: `postgresql://${process.env.USER}:${process.env.PASSWORD}@localhost:5432/managing_app`,
 });
+export default pool;
