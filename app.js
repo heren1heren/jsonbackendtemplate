@@ -10,7 +10,7 @@ import indexRouter from './Routes/index.js';
 //authenticate
 import session from 'express-session'; 
 import passport from 'passport';
-import pool from './db/pool.js';
+
 
 
 const { default: pgSession } = await import('connect-pg-simple');
