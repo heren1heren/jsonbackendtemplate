@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import 'dotenv/config';
-import User from '../prisma/user.js';
+import User from '../prisma/models/user.js';
 import passport from 'passport';
 // import * as controller from '../../Controllers/index.js';
 
